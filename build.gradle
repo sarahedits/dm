@@ -1,0 +1,114 @@
+version = '1.0-SNAPSHOT'
+
+/** Function always returns a new manifest that can be customized */
+def defaultManifest() {
+    return manifest{
+        def git_cmd = "git rev-parse HEAD"
+        def git_proc = git_cmd.execute()
+        attributes 'SCM-Revision': git_proc.text.trim()
+        attributes 'Timestamp': String.valueOf(System.currentTimeMillis())
+        attributes 'Build-Host': InetAddress.localHost.hostName
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+}
+
+subprojects {
+    apply plugin: 'maven'
+    apply plugin: 'signing'
+
+    group = 'com.github.dirkraft'
+
+    configurations {
+        all {
+            resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+        compile 'ch.qos.logback:logback-classic:1.0.7'
+
+        // test components
+        testCompile 'junit:junit:4.10'
+        testCompile 'org.mockito:mockito-core:1.9.0'
+    }
+
+    jar {
+        manifest = defaultManifest()
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from 'build/docs/javadoc'
+        manifest = defaultManifest()
+    }
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+        manifest = defaultManifest()
+    }
+
+    artifacts {
+        archives jar
+        archives javadocJar
+        archives sourcesJar
+    }
+
+    signing {
+        sign configurations.archives
+    }
+
+    uploadArchives {
+        enabled = false // by default
+        repositories.mavenDeployer {
+            // only necessary for staging/release
+            beforeDeployment { MavenDeployment deployment -> signPom(deployment) }
+
+            repository(
+                    // for snapshots
+                    url: "https://oss.sonatype.org/content/repositories/snapshots/"
+                    // for staging/release
+//                    url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            ) {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                name 'dm'
+                description "Let's see what this becomes."
+                url 'https://github.com/dirkraft/dm'
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+                scm {
+                    url 'scm:https://github.com/dirkraft/dm.git'
+                    connection 'scm:git://github.com/dirkraft/dm.git'
+                    developerConnection 'scm:git@github.com:dirkraft/dm.git'
+                }
+                developers {
+                    developer {
+                        id 'dirkraft'
+                        name 'Jason Dunkelberger'
+                    }
+                }
+            }
+        }
+    }
+}
+
+idea.project.languageLevel = 1.6

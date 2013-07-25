@@ -6,5 +6,5 @@ package com.dirkraft.github.dm.model;
  *
  * @author Jason Dunkelberger (dirkraft)
  */
-public interface Machine extends Agent {
+public interface Machine extends Agent, Graph {
 }

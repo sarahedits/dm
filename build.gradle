@@ -2,7 +2,7 @@ version = '1.0-SNAPSHOT'
 
 /** Function always returns a new manifest that can be customized */
 def defaultManifest() {
-    return manifest{
+    return manifest {
         def git_cmd = "git rev-parse HEAD"
         def git_proc = git_cmd.execute()
         attributes 'SCM-Revision': git_proc.text.trim()
@@ -32,6 +32,10 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven {
+            name = 'sonatype-snapshots'
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
     }
 
     dependencies {

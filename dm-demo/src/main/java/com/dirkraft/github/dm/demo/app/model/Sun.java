@@ -7,6 +7,18 @@ import com.dirkraft.github.dm.demo.app.service.TimeService;
  */
 public class Sun {
 
+    private final SunCurve sunCurve = new SunCurve() {
+        /**
+         * cycleCalibration *
+         */
+        final double cycleFactor = 2 * Math.PI / 24;
+
+        @Override
+        public double sun(int hour) {
+            double arc = Math.sin(hour * cycleFactor);
+            return arc > 0 ? arc : 0;
+        }
+    };
     private final TimeService timeService;
 
     public Sun(TimeService timeService) {
@@ -14,9 +26,16 @@ public class Sun {
     }
 
     /**
-     * @return amount of sun in range [0, 10] where 0 is pitch black and 10 is full sun
+     * @return amount of sun in range [0.0, 1.0] where 0 is pitch black and 1 is full sun
      */
-    int getSun() {
-        return timeService.hour()
+    double getSun() {
+        return sunCurve.sun(timeService.hour());
     }
+}
+
+interface SunCurve {
+    /**
+     * @return amount of sun in range [0.0, 1.0] where 0 is pitch black and 1 is full sun as function of hour
+     */
+    double sun(int hour);
 }

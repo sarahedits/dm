@@ -1,3 +1,4 @@
 include 'dm-api',
+        'dm-table',
         'dm-ui',
         'dm-demo'

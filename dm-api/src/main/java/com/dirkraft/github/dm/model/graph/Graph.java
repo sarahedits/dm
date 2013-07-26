@@ -1,4 +1,4 @@
-package com.dirkraft.github.dm.model;
+package com.dirkraft.github.dm.model.graph;
 
 import com.dirkraft.github.dm.model.base.Descript;
 

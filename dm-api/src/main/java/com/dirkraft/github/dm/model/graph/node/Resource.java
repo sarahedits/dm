@@ -1,4 +1,6 @@
-package com.dirkraft.github.dm.model;
+package com.dirkraft.github.dm.model.graph.node;
+
+import com.dirkraft.github.dm.model.graph.edge.Flow;
 
 /**
  * A Resource typically refers to relatively basic needs, such as Databases, or AWS services. A Resource may back

@@ -115,4 +115,8 @@ subprojects {
     }
 }
 
-idea.project.languageLevel = 1.6
+idea.project.languageLevel = 1.7
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}

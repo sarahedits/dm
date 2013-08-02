@@ -10,5 +10,5 @@ import com.dirkraft.github.dm.model.graph.edge.Need;
  *
  * @author Jason Dunkelberger (dirkraft)
  */
-public interface Machine extends Agent, Graph {
+public interface Machine extends Graph, Agent {
 }

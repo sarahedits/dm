@@ -13,7 +13,19 @@ public interface Descript {
     String id();
 
     /**
-     * @return a description of the nature of this thing.
+     * @param id for this thing
+     * @return this for chaining
+     */
+    Descript id(String id);
+
+    /**
+     * @return a description of the nature of this thing
      */
     String desc();
+
+    /**
+     * @param desc description of the nature of this thing
+     * @return this for chaining
+     */
+    Descript desc(String desc);
 }

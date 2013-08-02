@@ -1,6 +1,6 @@
 package com.dirkraft.github.dm.model.graph.node;
 
-import com.dirkraft.github.dm.model.base.Descript;
+import com.dirkraft.github.dm.model.graph.GraphElement;
 
 /**
  * Represents a single instance of something. Could be a whole {@link Machine} or could represent any particular
@@ -8,5 +8,5 @@ import com.dirkraft.github.dm.model.base.Descript;
  *
  * @author Jason Dunkelberger (dirkraft)
  */
-public interface Agent extends Descript {
+public interface Agent extends GraphElement {
 }

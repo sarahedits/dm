@@ -1,6 +1,6 @@
 package com.dirkraft.github.dm.model.graph.edge;
 
-import com.dirkraft.github.dm.model.base.Descript;
+import com.dirkraft.github.dm.model.graph.GraphElement;
 import com.dirkraft.github.dm.model.graph.node.Agent;
 
 import javax.annotation.Resource;
@@ -11,22 +11,40 @@ import javax.annotation.Resource;
  *
  * @author Jason Dunkelberger (dirkraft)
  */
-public interface Channel extends Descript {
+public interface Channel extends GraphElement {
 
     /**
      * @return the types of signals that this Channel may convey
      */
-    Class<?>[] signal();
+    Class<?>[] signals();
+
+    /**
+     * @param signals the types of signals that this Channel may convey
+     * @return this for chaining
+     */
+    Channel signals(Class<?>... signals);
 
     /**
      * @return typically the provider or producer of the messages carried by this channel
      */
-    Agent source();
+    String sourceAgent();
+
+    /**
+     * @param sourceAgent typically the provider or producer of the messages carried by this channel
+     * @return this for chaining
+     */
+    Channel sourceAgent(String sourceAgent);
 
     /**
      * @return typically the consumer of the message carried by this channel
      */
-    Agent dest();
+    String destAgent();
+
+    /**
+     * @param destAgent typically the consumer of the message carried by this channel
+     * @return this for chaining
+     */
+    Channel destAgent(String destAgent);
 
     /**
      * A Channel may simply describe the connection between other agents, though it may also itself be backed by an
@@ -36,5 +54,12 @@ public interface Channel extends Descript {
      * @return backing provider in the case that this Channel may be facilitated by some distinct Agent, rather than
      *         modeling an otherwise insubstantial connection between other Agents
      */
-    Agent backbone();
+    String backboneAgent();
+
+    /**
+     * @param backboneAgent backing provider in the case that this Channel may be facilitated by some distinct Agent,
+     *                      rather than modeling an otherwise insubstantial connection between other Agents
+     * @return this for chaining
+     */
+    Channel backboneAgent(String backboneAgent);
 }

@@ -5,4 +5,7 @@ package com.github.dirkraft.dm.service;
  */
 public class GraphServiceImpl {
 
+    public GraphServiceImpl() {
+
+    }
 }

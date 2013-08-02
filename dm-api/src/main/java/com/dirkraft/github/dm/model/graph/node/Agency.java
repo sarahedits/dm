@@ -1,7 +1,5 @@
 package com.dirkraft.github.dm.model.graph.node;
 
-import com.dirkraft.github.dm.model.base.Descript;
-
 import java.util.Collection;
 
 /**
@@ -9,5 +7,5 @@ import java.util.Collection;
  *
  * @author Jason Dunkelberger (dirkraft)
  */
-public interface Agency extends Collection<Agent>, Descript, Agent {
+public interface Agency extends Collection<Agent>, Agent {
 }

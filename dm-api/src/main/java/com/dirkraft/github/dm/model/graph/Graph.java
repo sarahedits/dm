@@ -8,5 +8,4 @@ package com.dirkraft.github.dm.model.graph;
  */
 public interface Graph extends GraphElement {
 
-
 }

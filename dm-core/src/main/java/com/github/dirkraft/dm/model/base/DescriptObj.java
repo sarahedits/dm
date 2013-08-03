@@ -7,28 +7,31 @@ import com.dirkraft.github.dm.model.base.Descript;
  */
 public class DescriptObj implements Descript {
 
-    protected String id;
-    protected String desc;
+    protected DescriptFrame frame;
+
+    protected DescriptObj(DescriptFrame descriptFrame) {
+        this.frame = descriptFrame;
+    }
 
     @Override
     public String id() {
-        return id;
+        return frame.asVertex().getId().toString();
     }
 
     @Override
     public Descript id(String id) {
-        this.id = id;
-        return this;
+        throw new RuntimeException("ID cannot be changed");
     }
 
     @Override
     public String desc() {
-        return desc;
+        return frame.getDesc();
     }
 
     @Override
     public Descript desc(String desc) {
-        this.desc = desc;
+        frame.setDesc(desc);
         return this;
     }
+
 }

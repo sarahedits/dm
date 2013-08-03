@@ -7,4 +7,6 @@ import com.github.dirkraft.dm.model.base.DescriptObj;
  * @author Jason Dunkelberger (dirkraft)
  */
 public class DoodadObj extends DescriptObj implements Doodad {
+
+
 }

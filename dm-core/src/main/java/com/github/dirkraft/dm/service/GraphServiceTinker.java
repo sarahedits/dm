@@ -3,9 +3,7 @@ package com.github.dirkraft.dm.service;
 /**
  * @author Jason Dunkelberger (dirkraft)
  */
-public class GraphServiceImpl {
+public class GraphServiceTinker implements GraphService {
 
-    public GraphServiceImpl() {
 
-    }
 }

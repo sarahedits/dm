@@ -34,6 +34,12 @@ public class GraphFactoryTinker implements GraphFactory {
 
     public GraphFactoryTinker(String id) {
         this.framedGraph = new FramedGraphFactory().create(new TinkerGraph("data/" + id, TinkerGraph.FileType.GRAPHSON));
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                framedGraph.shutdown();
+            }
+        }));
     }
 
     @Override

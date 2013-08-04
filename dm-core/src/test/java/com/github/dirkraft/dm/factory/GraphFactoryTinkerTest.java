@@ -2,6 +2,8 @@ package com.github.dirkraft.dm.factory;
 
 import com.dirkraft.github.dm.factory.GraphFactory;
 import com.dirkraft.github.dm.model.graph.edge.Flow;
+import com.dirkraft.github.dm.model.graph.node.Agency;
+import com.dirkraft.github.dm.model.graph.node.Agent;
 import org.junit.After;
 import org.junit.Test;
 
@@ -10,12 +12,14 @@ import org.junit.Test;
  */
 public class GraphFactoryTinkerTest {
 
-    GraphFactory graphFactory = new GraphFactoryTinker("GraphFactoryTinkerTest");
+    GraphFactoryTinker graphFactory = new GraphFactoryTinker("GraphFactoryTinkerTest");
 
     @Test
     public void testFactory() {
 
-        Flow flow1 = graphFactory.newFlow("flow1");
+        Agent smith = graphFactory.newAgent("Agent Smith");
+        Agent jones = graphFactory.newAgent("Agent Jones");
+        Agency mib = graphFactory.newAgency("MIB");
 
     }
 

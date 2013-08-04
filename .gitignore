@@ -4,3 +4,4 @@ gradle/
 *.ipr
 *.iws
 out/
+data/

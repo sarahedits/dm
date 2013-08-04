@@ -6,4 +6,5 @@ package com.github.dirkraft.dm.service;
 public class GraphServiceTinker implements GraphService {
 
 
+
 }

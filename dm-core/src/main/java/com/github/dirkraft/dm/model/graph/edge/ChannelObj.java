@@ -2,58 +2,59 @@ package com.github.dirkraft.dm.model.graph.edge;
 
 import com.dirkraft.github.dm.model.graph.edge.Channel;
 import com.github.dirkraft.dm.model.graph.GraphElementObj;
+import com.tinkerpop.blueprints.Direction;
 
 /**
  * @author Jason Dunkelberger (dirkraft)
  */
 public class ChannelObj extends GraphElementObj implements Channel {
 
-    protected Class<?>[] signals;
-    protected String sourceAgent;
-    protected String destAgent;
-    protected String backboneAgent;
+    private final ChannelFrame frame;
+
+    protected ChannelObj(ChannelFrame frame) {
+        super(frame, frame);
+        this.frame = frame;
+    }
 
     @Override
     public Class<?>[] signals() {
-        return signals;
+        return frame.getSignals();
     }
 
     @Override
     public Channel signals(Class<?>... signals) {
-        this.signals = signals;
+        frame.setSignals(signals);
         return this;
     }
 
     @Override
     public String sourceAgent() {
-        return sourceAgent;
+        return frame.asEdge().getVertex(Direction.OUT).getId().toString();
     }
 
     @Override
     public Channel sourceAgent(String sourceAgent) {
-        this.sourceAgent = sourceAgent;
-        return this;
+        throw new RuntimeException("Edge may not be reattached to another Agent.");
     }
 
     @Override
     public String destAgent() {
-        return destAgent;
+        return frame.asEdge().getVertex(Direction.IN).getId().toString();
     }
 
     @Override
     public Channel destAgent(String destAgent) {
-        this.destAgent = destAgent;
-        return this;
+        throw new RuntimeException("Edge may not be reattached to another Agent.");
     }
 
     @Override
     public String backboneAgent() {
-        return backboneAgent;
+        return frame.getBackboneAgent();
     }
 
     @Override
     public Channel backboneAgent(String backboneAgent) {
-        this.backboneAgent = backboneAgent;
+        frame.setBackboneAgent(backboneAgent);
         return this;
     }
 }

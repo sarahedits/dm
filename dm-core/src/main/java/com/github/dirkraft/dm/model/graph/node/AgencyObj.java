@@ -13,6 +13,10 @@ public class AgencyObj extends AgentObj implements Agency {
 
     protected Collection<Agent> agents;
 
+    public AgencyObj(AgencyFrame agencyFrame) {
+        super(agencyFrame);
+    }
+
     // delegation
 
     @Override

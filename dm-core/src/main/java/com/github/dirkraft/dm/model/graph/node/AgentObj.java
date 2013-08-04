@@ -7,4 +7,9 @@ import com.github.dirkraft.dm.model.graph.GraphElementObj;
  * @author Jason Dunkelberger (dirkraft)
  */
 public class AgentObj extends GraphElementObj implements Agent {
+
+    public AgentObj(AgentFrame agentFrame) {
+        super(agentFrame, agentFrame);
+    }
+
 }

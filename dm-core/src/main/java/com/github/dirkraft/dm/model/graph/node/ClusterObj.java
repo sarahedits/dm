@@ -13,6 +13,10 @@ public class ClusterObj extends AgentObj implements Cluster {
 
     protected Collection<Machine> machines;
 
+    public ClusterObj(ClusterFrame clusterFrame) {
+        super(clusterFrame);
+    }
+
     // delegation
 
     @Override

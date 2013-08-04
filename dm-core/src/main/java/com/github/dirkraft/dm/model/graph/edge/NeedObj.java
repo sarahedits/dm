@@ -6,4 +6,8 @@ import com.dirkraft.github.dm.model.graph.edge.Need;
  * @author Jason Dunkelberger (dirkraft)
  */
 public class NeedObj extends ChannelObj implements Need {
+
+    public NeedObj(NeedFrame frame) {
+        super(frame);
+    }
 }

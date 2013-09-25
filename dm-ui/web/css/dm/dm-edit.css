@@ -1,0 +1,18 @@
+#toolbar {
+    display: block;
+    position: fixed;
+    width: 256px;
+    top: 0;
+    left: 0;
+    /* fill toolbar background if there aren't enough controls to fill vertical space */
+    min-height: 100%;
+    z-index: 1000;
+    background: #eee;
+}
+
+#graph {
+    display: block;
+    position: absolute;
+    /* equal to #toolbar width */
+    left: 256px;
+}

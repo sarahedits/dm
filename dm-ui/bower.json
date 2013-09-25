@@ -1,0 +1,10 @@
+{
+    "name": "dm-ui",
+    "version": "0.0.0-SNAPSHOT",
+    "description": "dm-ui",
+    "repository": "https://github.com/dirkraft/dm",
+    "dependencies": {
+        "jquery": "",
+        "raphael": ""
+    }
+}

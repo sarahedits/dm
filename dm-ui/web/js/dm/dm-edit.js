@@ -1,6 +1,17 @@
-var DM = DM || {};
+// includes requirejs base configuration
+DM.configure();
 
-DM.paper = $(function () {
+define(['jquery/jquery'], function($) {
+    console.log($);
+});
+/*
+DM.space = $(function () {
+
+    var space = {
+
+        paper: null
+
+    };
 
     var width = 4096, height = 2048;
     var gridStep = 128;
@@ -13,6 +24,7 @@ DM.paper = $(function () {
 
     DM.util.gridLines(paper, gridStep, width, height);
 
-    return paper;
+    return space;
 
 });
+    */

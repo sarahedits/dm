@@ -5,6 +5,7 @@
     "repository": "https://github.com/dirkraft/dm",
     "dependencies": {
         "jquery": "",
-        "raphael": ""
+        "raphael": "",
+        "requirejs": ""
     }
 }

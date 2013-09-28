@@ -1,6 +1,9 @@
-$(function () {
+var DM = DM || {};
+
+DM.paper = $(function () {
 
     var width = 4096, height = 2048;
+    var gridStep = 128;
 
     var paper = Raphael('graph', width, height);
 
@@ -8,13 +11,8 @@ $(function () {
     background.attr('stroke', '#ddd');
     background.attr('fill', '#ddd');
 
-    // TODO move to graph util or some such
-    var step = 128;
-    for (var i = step; i < width; i += step) {
-        paper.path('M{0},{1}L{2},{3}'.format(i, 0, i, height)).attr('stroke', '#bbb');
-    }
-    for (var i = step; i < height; i += step) {
-        paper.path('M{0},{1}L{2},{3}'.format(0, i, width, i)).attr('stroke', '#bbb');
-    }
+    DM.util.gridLines(paper, gridStep, width, height);
+
+    return paper;
 
 });
